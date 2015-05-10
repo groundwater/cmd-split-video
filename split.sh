@@ -17,14 +17,13 @@ done
 NAME="part-$I.mp4"
 echo "Saving to ${NAME}"
 
-# ffmpeg \
-#   -ss $T0 \
-#   -t $T1 \
-#   -i $1 \
-#   -acodec copy \
-#   -vcodec copy \
-
-touch "$NAME"
+ffmpeg \
+  -ss $T0 \
+  -t $T1 \
+  -i $1 \
+  -acodec copy \
+  -vcodec copy \
+  ${NAME}
 
 while [ -e "part-$I.mp4" ]; do
   I=$(($I+1))
@@ -33,14 +32,12 @@ done
 NAME="part-$I.mp4"
 echo "Saving to ${NAME}"
 
-# ffmpeg \
-#   -ss $T1 \
-#   -i $1 \
-#   -acodec copy \
-#   -vcodec copy \
-#   part-2.mp4
-
-touch "$NAME"
+ffmpeg \
+  -ss $T1 \
+  -i $1 \
+  -acodec copy \
+  -vcodec copy \
+  ${NAME}
 
 TAIL=${@:(2)}
 
